@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="86a5ff20-6450-4d84-a748-069e3bc48b78" >
+		<file:connection />
+	</file:config>
+	<flow name="filesFlow" doc:id="47e42227-2e6a-4f3b-b852-7b214ae13393" >
+		<scheduler doc:name="Scheduler" doc:id="f601d37d-a5b4-47c9-8ce1-30a602d03ed9" >
+			<scheduling-strategy >
+				<fixed-frequency/>
+			</scheduling-strategy>
+		</scheduler>
+		<file:read doc:name="Read" doc:id="6bbdc381-daf2-4b23-b951-af90c1db7f6c" config-ref="File_Config" path="C:/Priyanka/textdoc/hello.txt" target="readFirstFile">
+			<repeatable-in-memory-stream bufferUnit="BYTE"/>
+		</file:read>
+		<logger level="INFO" doc:name="Logger" doc:id="b73f6480-e270-49f2-a840-f625c9932e91" message="#[vars.readFirstFile]"/>
+	</flow>
+</mule>

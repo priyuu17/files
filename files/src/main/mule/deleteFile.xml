@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<flow name="deleteFileFlow" doc:id="843f2748-9121-47a3-aaf3-569215f81f75" >
+		<scheduler doc:name="Scheduler" doc:id="aef767ce-a98a-4388-9482-0a92337bf1f3" >
+			<scheduling-strategy >
+				<fixed-frequency />
+			</scheduling-strategy>
+		</scheduler>
+		<file:delete doc:name="Delete" doc:id="d8726369-2347-4f62-b598-30527ac431d5" config-ref="File_Config" path="C:/Priyanka/textdoc/writeData.txt"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f284ef3c-51fd-4570-85ab-b7dbb2be902d" message="File deleted Successfully"/>
+	</flow>
+</mule>
